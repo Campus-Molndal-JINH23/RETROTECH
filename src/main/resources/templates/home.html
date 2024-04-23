@@ -7,7 +7,7 @@
     <meta name="author" content="" />
     <title>Hem - RetroTech</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/retro.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/retro.png" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -18,8 +18,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
         <!-- Logotyp -->
-        <a class="navbar-brand" href="#!">
-            <img src="assets/retro.png" alt="Retro Logo" height="40">
+        <a class="navbar-brand" th:href="@{/}">
+            <img src="/assets/retro.png" alt="Retro Logo" height="40">
         </a>
         <!-- Hamburger-meny (till mobil) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,15 +29,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Hem</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Hem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Produkter</a>
+                    <a class="nav-link" th:href="@{/products}">Produkter</a>
                 </li>
             </ul>
             <!-- Sökfält och knapp -->
             <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">Kundvagn</button>
+                <!-- Ändra till rätt namn på kundvagn-->
+                <a class="btn btn-outline-dark" th:href="@{/cart}">
+                    <i class="bi-cart-fill me-1"></i>
+                    Kundvagn
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </a>
             </form>
         </div>
     </div>
@@ -92,7 +97,7 @@
                     </div>
                     <!-- Content actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Produkter</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/products}">Produkter</a></div>
                     </div>
                 </div>
             </div>
@@ -108,6 +113,6 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
 </body>
 </html>
