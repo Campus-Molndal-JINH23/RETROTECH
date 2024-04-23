@@ -2,10 +2,10 @@ package com.jinipl.retrotech;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class ProductService {
-
 
     private ProductRepository productRepository;
 
@@ -14,12 +14,12 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public Iterable<Product> showAllProducts() {
+    public List<Product> showAllProducts() {
         return productRepository.findAll();
     }
 
-    public Iterable<Product> findByCategoryAndName(String category, String name) {
-        return productRepository.findByCategoryAndName(category, name);
+    public List<Product> findProductsByCategory(String category) {
+        return productRepository.findByCategory(category);
     }
 
 }
