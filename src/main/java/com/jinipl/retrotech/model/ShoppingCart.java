@@ -1,7 +1,5 @@
 package com.jinipl.retrotech.model;
 
-import com.jinipl.retrotech.Product;
-
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 

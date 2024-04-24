@@ -1,8 +1,8 @@
 package com.jinipl.retrotech.controller;
 
-import com.jinipl.retrotech.Product;
 import com.jinipl.retrotech.model.Order;
 
+import com.jinipl.retrotech.model.Product;
 import com.jinipl.retrotech.model.ShoppingCart;
 import com.jinipl.retrotech.repos.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;

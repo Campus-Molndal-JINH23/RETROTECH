@@ -1,4 +1,4 @@
-package com.jinipl.retrotech;
+package com.jinipl.retrotech.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -12,38 +12,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <!-- Logotyp -->
-        <a class="navbar-brand" th:href="@{/}">
-            <img src="/assets/retro.png" alt="Retro Logo" height="40">
-        </a>
-        <!-- Hamburger-meny (till mobil) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img  th:src="@{/assets/logo.png}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Navigationslänkar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Hem</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/products}">Produkter</a>
-                </li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Hem</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/products}">Produkter</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/faq}">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/discount}">Kundvagn</a></li>
             </ul>
-            <!-- Sökfält och knapp -->
-            <form class="d-flex">
-                <!-- Ändra till rätt namn på kundvagn-->
-                <a class="btn btn-outline-dark" th:href="@{/cart}">
-                    <i class="bi-cart-fill me-1"></i>
-                    Kundvagn
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </a>
-            </form>
         </div>
     </div>
 </nav>

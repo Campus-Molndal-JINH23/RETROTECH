@@ -1,7 +1,5 @@
 package com.jinipl.retrotech.model;
 
-import com.jinipl.retrotech.Product;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

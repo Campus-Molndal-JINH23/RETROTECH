@@ -11,16 +11,16 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <img th:src="@{/assets/logo.png}">
+        <img  th:src="@{/assets/retro.png}">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link" href="#">Hem</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Produkter</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Kundvagn</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Hem</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/products}">Produkter</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/faq}">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/discount}">Kundvagn</a></li>
             </ul>
         </div>
     </div>
