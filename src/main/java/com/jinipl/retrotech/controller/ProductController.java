@@ -1,5 +1,7 @@
-package com.jinipl.retrotech;
+package com.jinipl.retrotech.controller;
 
+import com.jinipl.retrotech.Product;
+import com.jinipl.retrotech.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

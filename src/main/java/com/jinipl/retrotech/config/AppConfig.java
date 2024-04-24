@@ -16,18 +16,18 @@ public class AppConfig {
     @Value("${spring.data.mongodb.uri}")
     private String mongoUri;
 
-    @Bean
+   /*@Bean
     public ShoppingCartController shoppingCartController(ShoppingCart shoppingCart, OrderRepository orderRepository) {
         return new ShoppingCartController(shoppingCart, orderRepository);
-    }
+    }*/
 
-    @Bean
+    @Bean("shop")
     public ShoppingCart shoppingCart() {
         return new ShoppingCart();
     }
 
 
-    @Bean
+   /* @Bean
     public MongoTemplate mongoTemplate() {
         ConnectionString connString = new ConnectionString(mongoUri);
         String databaseName = connString.getDatabase();
@@ -38,5 +38,5 @@ public class AppConfig {
                 .applyConnectionString(connString)
                 .build();
         return new MongoTemplate(MongoClients.create(settings), databaseName);
-    }
+    }*/
 }

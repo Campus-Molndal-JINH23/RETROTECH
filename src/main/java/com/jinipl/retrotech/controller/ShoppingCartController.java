@@ -1,7 +1,8 @@
 package com.jinipl.retrotech.controller;
 
+import com.jinipl.retrotech.Product;
 import com.jinipl.retrotech.model.Order;
-import com.jinipl.retrotech.models.Product;
+
 import com.jinipl.retrotech.model.ShoppingCart;
 import com.jinipl.retrotech.repos.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class ShoppingCartController {
 
         shoppingCart.clearCart();
 
-        return "redirect:/orderconfirmation"; //TODO: koppla med Samuels bekräftelsefil
+        return "redirect:/order_confirmation";
     }
 
 }
