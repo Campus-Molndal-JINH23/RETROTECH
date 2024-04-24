@@ -25,4 +25,7 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
+    public void removeProduct(Product product) {productRepository.delete(product);    }
+
+    public void addProduct(Product product) {productRepository.save(product);}
 }

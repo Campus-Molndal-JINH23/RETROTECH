@@ -1,5 +1,6 @@
 package com.jinipl.retrotech.model;
 
+import com.jinipl.retrotech.service.ProductService;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,6 +13,8 @@ import java.util.List;
 @Document("shoppingcart")
 public class ShoppingCart {
     private List<Product> products = new ArrayList<>();
+    private ProductService productService;
+
 
 
     public void addProduct(Product product) {
@@ -19,7 +22,10 @@ public class ShoppingCart {
     }
 
     public void removeProduct(Product product) {
+
         products.remove(product);
+        productService.addProduct(product);
+
     }
 
     public void removeProductById(String productId) {

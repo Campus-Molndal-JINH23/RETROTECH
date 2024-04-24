@@ -5,6 +5,7 @@ import com.jinipl.retrotech.model.Order;
 import com.jinipl.retrotech.model.Product;
 import com.jinipl.retrotech.model.ShoppingCart;
 import com.jinipl.retrotech.repos.OrderRepository;
+import com.jinipl.retrotech.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +20,15 @@ public class ShoppingCartController {
 
     private final ShoppingCart shoppingCart;
     private final OrderRepository orderRepository;
+    private final ProductService productService;
     private Order currentOrder; // To store the current order being processed
 
     @Autowired
-    public ShoppingCartController(ShoppingCart shoppingCart, OrderRepository orderRepository) {
+    public ShoppingCartController(ShoppingCart shoppingCart, OrderRepository orderRepository, ProductService productService) {
         this.shoppingCart = shoppingCart;
         this.orderRepository = orderRepository;
+
+        this.productService = productService;
     }
 
     @GetMapping
@@ -36,10 +40,15 @@ public class ShoppingCartController {
         return "shoppingcart";
     }
 
-    @PostMapping("/add")
-    public String addToCart(@ModelAttribute Product product) {
-        shoppingCart.addProduct(product);
-        return "redirect:/shoppingcart";
+    @PostMapping("/add/{productId}")
+    public String addToCart(@PathVariable String productId) {
+        for (Product product : productService.showAllProducts()) {
+            if (product.getId() == productId) {
+                shoppingCart.addProduct(product);
+                productService.removeProduct(product);
+            }
+        }
+        return "redirect:/products";
     }
 
     @PostMapping("/remove/{productId}")

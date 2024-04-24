@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Hem - RetroTech</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/retro.png" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <img  th:src="@{/assets/logo.png}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Hem</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/products}">Produkter</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/faq}">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/discount}">Kundvagn</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">RetroTech - FAQ</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Här hittar du svar på vanliga frågor!</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-10" style="margin-bottom: 50px;">
+                <div class="card h-100">
+                    <!-- Content details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Content title-->
+                            <h5 class="fw-bolder mb-4">Vanliga frågor</h5>
+                            <!-- Content text-->
+                            <p class="text-muted">Här hittar du svar på några vanliga frågor om RetroTech.</p>
+
+                            <!-- FAQ -->
+                            <!-- Question 1 -->
+                            <h6 class="fw-bolder mb-3">Vad erbjuder RetroTech för produkter?</h6>
+                            <p class="text-muted">Vi erbjuder ett brett utbud av vintage kameror, första generationens spelkonsoler och sällsynta vinylskivor.</p>
+
+                            <!-- Question 2 -->
+                            <h6 class="fw-bolder mb-3">Kan du ge exempel på priser?</h6>
+                            <p class="text-muted">Absolut! Här är några prisexempel:</p>
+                            <ul class="text-muted">
+                                <li>Vintage kamera: 1200 kr</li>
+                                <li>Första generationens spelkonsol: 1500 kr</li>
+                                <li>Sällsynt vinylskiva: 300 kr</li>
+                            </ul>
+
+                            <!-- Question 3 -->
+                            <h6 class="fw-bolder mb-3">Hur fungerar leverans?</h6>
+                            <p class="text-muted">Vi levererar via post inom 7-10 arbetsdagar. Ett porto på 100 kr tillkommer.</p>
+
+                            <!-- Question 4 -->
+                            <h6 class="fw-bolder mb-3">Vad är RetroTechs specialitet?</h6>
+                            <p class="text-muted">Vi erbjuder ett unikt bytehandelssystem där kunder kan byta in sina egna samlarobjekt för rabatt på nya köp.</p>
+                        </div>
+                    </div>
+                    <!-- Content actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/products}">Se våra produkter</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; RetroTech</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+</body>
+</html>
