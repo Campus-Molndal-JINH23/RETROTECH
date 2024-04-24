@@ -37,12 +37,25 @@ public class ShoppingCart {
     }
 
 
-    public double getTotalPrice() {
+    public double getTotalPrice(String discountPercentage) {
         double totalPrice = 0;
+        double discount = 0; // Default discount is 0
+
+        if (discountPercentage != null) {
+            discount = Double.parseDouble(discountPercentage); // Parse discountPercentage to double
+        }
+
         for (Product product : products) {
             totalPrice += product.getPrice();
         }
+
+        if (discount > 0) {
+            double discountAmount = (totalPrice * discount) / 100; // Calculate discount amount
+            totalPrice -= discountAmount; // Apply discount to the total price
+        }
+
         return totalPrice;
     }
+
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Data
-@Document("orders")
+@Document
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {

@@ -29,10 +29,11 @@ public class ShoppingCartController {
     }
 
     @GetMapping
-    public String showShoppingCart(Model model) {
+    public String showShoppingCart(Model model, String discount) {
         List<Product> cartItems = shoppingCart.getProducts();
         model.addAttribute("cartItems", cartItems);
-        model.addAttribute("totalPrice", shoppingCart.getTotalPrice());
+        model.addAttribute("discount", discount);
+        model.addAttribute("totalPrice", shoppingCart.getTotalPrice(discount));
         return "shoppingcart";
     }
 
@@ -57,7 +58,7 @@ public class ShoppingCartController {
                            @RequestParam String discount) {
         currentOrder = new Order();
         currentOrder.setProducts(shoppingCart.getProducts());
-        currentOrder.setTotalPrice(shoppingCart.getTotalPrice());
+        currentOrder.setTotalPrice(shoppingCart.getTotalPrice(discount));
         currentOrder.setName(name);
         currentOrder.setAddress(address);
         currentOrder.setPostalCode(postalCode);
@@ -70,7 +71,7 @@ public class ShoppingCartController {
 
         shoppingCart.clearCart();
 
-        return "redirect:/orderconfirmation";
+        return "redirect:/orderconfirmation"; //TODO: koppla med Samuels bekräftelsefil
     }
 
 }
