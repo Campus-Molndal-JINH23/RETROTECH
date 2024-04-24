@@ -8,7 +8,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableMongoRepositories
-@ComponentScan(basePackages = "com.jinipl.retrotech")
+@ComponentScan(basePackages = "com.jinipl.retrotech")git
+
 public class RetrotechApplication {
 
 	public static void main(String[] args) {

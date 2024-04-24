@@ -1,6 +1,6 @@
 package com.jinipl.retrotech.repos;
 
-import com.jinipl.retrotech.models.Order;
+import com.jinipl.retrotech.model.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

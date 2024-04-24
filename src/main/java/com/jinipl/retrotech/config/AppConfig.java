@@ -1,7 +1,7 @@
 package com.jinipl.retrotech.config;
 
-import com.jinipl.retrotech.controllers.ShoppingCartController;
-import com.jinipl.retrotech.models.ShoppingCart;
+import com.jinipl.retrotech.controller.ShoppingCartController;
+import com.jinipl.retrotech.model.ShoppingCart;
 import com.jinipl.retrotech.repos.OrderRepository;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
