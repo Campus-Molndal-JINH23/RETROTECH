@@ -2,6 +2,8 @@ package com.jinipl.retrotech.config;
 
 import com.jinipl.retrotech.model.Order;
 import com.jinipl.retrotech.model.ShoppingCart;
+import com.jinipl.retrotech.repos.ProductRepository;
+import com.jinipl.retrotech.service.ProductService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,8 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public ShoppingCart shoppingCart() {
-        return new ShoppingCart();
+    public ProductService productService(ProductRepository productRepository) {
+        return new ProductService(productRepository);
+    }
+    @Bean
+    public ShoppingCart shoppingCart(ProductService productService) {
+        return new ShoppingCart(productService);
     }
 
     @Bean

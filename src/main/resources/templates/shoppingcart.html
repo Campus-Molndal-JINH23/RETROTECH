@@ -33,7 +33,7 @@
 
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center product-cards">
         <!-- Kontrollera om shoppingCart är inte null och inte tom -->
-        <div th:if="${shoppingCart != null and not shoppingCart.products.empty()}" th:each="product : ${shoppingCart?.products}" class="col mb-5">
+        <div th:if="${cartItems != null and cartItems.size() > 0}" th:each="product : ${cartItems}" class="col mb-5">
             <div class="card h-100">
                 <!-- Produktbild -->
                 <img th:src="${product.imageUrl}" class="card-img-top" alt="Produktbild">
@@ -41,9 +41,9 @@
                     <!-- Produktens namn -->
                     <h5 th:text="${product.name}" class="fw-bolder"></h5>
                     <!-- Produktens pris -->
-                    <p th:text="'$' + ${product.price}" class="card-text"></p>
+                    <p th:text="${product.price} + 'SEK'" class="card-text"></p>
                     <!-- Ta bort från kundvagn-knappen -->
-                    <form th:action="@{/shoppingcart/remove}" method="post">
+                    <form th:action="@{'/shoppingcart/remove/' + ${product.id}}" method="post">
                         <input type="hidden" name="productId" th:value="${product.id}">
                         <button type="submit" class="btn btn-danger">Ta bort från kundvagnen</button>
                     </form>
@@ -52,7 +52,7 @@
         </div>
 
         <!-- Visa ett meddelande om kundvagnen är tom -->
-        <div th:if="${shoppingCart == null or shoppingCart.products.empty()}">
+        <div th:if="${cartItems != null and cartItems.size() == 0}">
             <p>Din kundvagn är tom.</p>
         </div>
     </div>
@@ -60,6 +60,7 @@
 
 <!-- Total -->
 <div class="container px-4 px-lg-5 mt-5">
+    <p>Leveransavgift: 100 SEK</p><br>
 
     <h3>Total: <span th:text="${totalPrice}"></span> SEK</h3>
 </div>
@@ -86,11 +87,12 @@
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">E-post</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Ange din e-postadress">
+            <input type="text" class="form-control" id="email" name="email" placeholder="Ange din e-postadress">
+            <!-- <input type="hidden" id="discount" name="discount" th:value="${discount}">-->
         </div>
 
 
-        <input type="hidden" id="orderDate" name="orderDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}">
+       <!-- <input type="hidden" id="orderDate" name="orderDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}">-->
         <button type="submit" class="btn btn-dark">Köp</button>
     </form>
 </div>

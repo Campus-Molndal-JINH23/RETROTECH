@@ -49,13 +49,15 @@
                 </div>
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <!--New button sending user to shoppingcart/add-->
-                    <div class="text-center"> <form th:action="@{/shoppingcart/add/${product.id}}" method="post">
+                    <div class="text-center">
+                        <form th:action="@{'/shoppingcart/add/' + ${product.id}}" method="post">
                         <input type="hidden" name="productId" th:value="${product.id}">
-                        <button type="submit" class="btn btn-outline-dark mt-auto">Add to Cart</button>
+                        <button type="submit" class="btn btn-outline-dark mt-auto">Lägg till i varukorgen</button>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

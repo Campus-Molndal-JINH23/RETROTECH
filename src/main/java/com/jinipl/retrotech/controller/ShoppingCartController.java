@@ -22,6 +22,7 @@ public class ShoppingCartController {
     private final ShoppingCart shoppingCart;
     private final OrderRepository orderRepository;
     private final ProductService productService;
+    public String discountValue;
     private Order currentOrder; // To store the current order being processed
 
     @Autowired
@@ -33,13 +34,21 @@ public class ShoppingCartController {
     }
 
     @GetMapping
-    public String showShoppingCart(Model model, String discount) {
-        List<Product> cartItems = shoppingCart.getProducts();
-        model.addAttribute("cartItems", cartItems);
-        model.addAttribute("discount", discount);
+    public String showShoppingCart(Model model, @ModelAttribute("discount") String discount) {
+        model.addAttribute("cartItems", shoppingCart.getProducts());
+
+        if (discount != null && !discount.isEmpty()) {
+            model.addAttribute("discount", discount);
+        } else {
+            model.addAttribute("discount", "0"); // Set default discount to 0
+        }
+        discountValue = discount;
+        // Calculate and add the total price
         model.addAttribute("totalPrice", shoppingCart.getTotalPrice(discount));
+
         return "shoppingcart";
     }
+
 
     @PostMapping("/add/{productId}")
     public String addToCart(@PathVariable String productId) {
@@ -54,7 +63,7 @@ public class ShoppingCartController {
 
     @PostMapping("/remove/{productId}")
     public String removeFromCart(@PathVariable String productId) {
-        shoppingCart.removeProductById(productId);
+        shoppingCart.removeProductById(productId);// Lägger till en product tillbaka i ProductRepon i själva metoden i ShoppingCart.java
         return "redirect:/shoppingcart";
     }
 
@@ -63,24 +72,23 @@ public class ShoppingCartController {
                            @RequestParam String address,
                            @RequestParam String postalCode,
                            @RequestParam String city,
-                           @RequestParam String email,
-                           @RequestParam String discount) {
+                           @RequestParam String email) {
         currentOrder = new Order();
         currentOrder.setProducts(shoppingCart.getProducts());
-        currentOrder.setTotalPrice(shoppingCart.getTotalPrice(discount));
+        currentOrder.setTotalPrice(shoppingCart.getTotalPrice(discountValue));
         currentOrder.setName(name);
         currentOrder.setAddress(address);
         currentOrder.setPostalCode(postalCode);
         currentOrder.setCity(city);
         currentOrder.setEmail(email);
-        currentOrder.setDiscount(discount);
-        currentOrder.setOrderDate(LocalDateTime.now());
+        //currentOrder.setDiscount(discount);
+        //currentOrder.setOrderDate(LocalDateTime.now());
 
         orderRepository.save(currentOrder);
 
         shoppingCart.clearCart();
 
-        return "redirect:/order_confirmation";
+        return "redirect:/order";
     }
 
 }

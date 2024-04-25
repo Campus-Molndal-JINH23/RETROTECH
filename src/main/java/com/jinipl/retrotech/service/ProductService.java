@@ -2,20 +2,19 @@ package com.jinipl.retrotech.service;
 
 import com.jinipl.retrotech.model.Product;
 import com.jinipl.retrotech.repos.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class ProductService {
 
-    private final ProductRepository productRepository;
-
-    @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
     public List<Product> showAllProducts() {
         return productRepository.findAll();
@@ -25,7 +24,9 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
-    public void removeProduct(Product product) {productRepository.delete(product);    }
+    public void removeProduct(Product product) {productRepository.delete(product);}
 
     public void addProduct(Product product) {productRepository.save(product);}
+
+
 }

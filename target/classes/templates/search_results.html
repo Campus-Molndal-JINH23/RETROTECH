@@ -46,7 +46,9 @@
 
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center">
-                        <a class="btn btn-outline-dark mt-auto" href="#">Lägg till i kundvagnen</a>
+                        <form th:action="@{'/shoppingcart/add/' + ${product.id}}" method="post">
+                            <input type="hidden" name="productId" th:value="${product.id}">
+                            <button type="submit" class="btn btn-outline-dark mt-auto">Lägg till i varukorgen</button>
                     </div>
                 </div>
             </div>
