@@ -42,29 +42,29 @@
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Orderbekräftelse titel-->
-                            <h5 class="fw-bolder mb-4">Tack för ditt köp, <span th:text="${order.name}">Kund</span>!</h5>
+                            <h5 class="fw-bolder mb-4">Tack för ditt köp, <span th:text="${order.getName()}">Kund</span>!</h5>
                             <!-- Orderbekräftelse text-->
                             <p class="text-muted">
                                 Din order har mottagits och behandlas nu. Vi uppskattar ditt förtroende och ser fram emot att leverera dina produkter snart.
                             </p>
                             <p class="text-muted">
-                                Faktura skickas till: <span th:text="${order.email}">exempel@mail.com</span>.
+                                Faktura skickas till: <span th:text="${order.getEmail()}">exempel@mail.com</span>.
                             </p>
                             <p class="text-muted">
                                 Leveransadress:
                                 <br>
-                                <span th:text="${order.address}"></span>,
-                                <span th:text="${order.postCode}"></span>,
-                                <span th:text="${order.city}"></span>
+                                <span th:text="${order.getAddress()}"></span>,
+                                <span th:text="${order.getPostalCode()}"></span>,
+                                <span th:text="${order.getCity()}"></span>
                             </p>
                             <p class="text-muted">
                                 Du har beställt följande produkt(er):
                             <ul>
-                                <li th:each="product : ${order.products}" th:text="${product.name} + ' - ' + ${product.price}"></li>
+                                <li th:each="product : ${order.getProducts()}" th:text="${product.getName()} + ' - ' + ${product.getPrice()}"></li>
                             </ul>
                             </p>
                             <p class="text-muted">
-                                Totalt belopp: <span th:text="${order.totalPrice}">0 kr</span>.
+                                Totalt belopp: <span th:text="${order.getTotalPrice()}">0 kr</span>.
                             </p>
                         </div>
                     </div>

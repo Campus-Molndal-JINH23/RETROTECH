@@ -20,15 +20,14 @@ import java.util.Objects;
 public class ShoppingCartController {
 
     private final ShoppingCart shoppingCart;
-    private final OrderRepository orderRepository;
     private final ProductService productService;
     public String discountValue;
-    private Order currentOrder; // To store the current order being processed
+    private Order order; // To store the current order being processed
 
     @Autowired
-    public ShoppingCartController(ShoppingCart shoppingCart, OrderRepository orderRepository, ProductService productService) {
+    public ShoppingCartController(ShoppingCart shoppingCart, Order order, ProductService productService) {
         this.shoppingCart = shoppingCart;
-        this.orderRepository = orderRepository;
+        this.order = order;
 
         this.productService = productService;
     }
@@ -73,18 +72,15 @@ public class ShoppingCartController {
                            @RequestParam String postalCode,
                            @RequestParam String city,
                            @RequestParam String email) {
-        currentOrder = new Order();
-        currentOrder.setProducts(shoppingCart.getProducts());
-        currentOrder.setTotalPrice(shoppingCart.getTotalPrice(discountValue));
-        currentOrder.setName(name);
-        currentOrder.setAddress(address);
-        currentOrder.setPostalCode(postalCode);
-        currentOrder.setCity(city);
-        currentOrder.setEmail(email);
+        order.setProducts(shoppingCart.getProducts());
+        order.setTotalPrice(shoppingCart.getTotalPrice(discountValue));
+        order.setName(name);
+        order.setAddress(address);
+        order.setPostalCode(postalCode);
+        order.setCity(city);
+        order.setEmail(email);
         //currentOrder.setDiscount(discount);
         //currentOrder.setOrderDate(LocalDateTime.now());
-
-        orderRepository.save(currentOrder);
 
         shoppingCart.clearCart();
 
