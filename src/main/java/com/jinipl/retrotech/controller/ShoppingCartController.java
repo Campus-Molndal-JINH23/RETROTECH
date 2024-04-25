@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/shoppingcart")
@@ -43,7 +44,7 @@ public class ShoppingCartController {
     @PostMapping("/add/{productId}")
     public String addToCart(@PathVariable String productId) {
         for (Product product : productService.showAllProducts()) {
-            if (product.getId() == productId) {
+            if (Objects.equals(product.getId(), productId)) {
                 shoppingCart.addProduct(product);
                 productService.removeProduct(product);
             }
