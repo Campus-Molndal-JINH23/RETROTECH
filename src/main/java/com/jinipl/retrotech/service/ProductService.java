@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -24,9 +25,17 @@ public class ProductService {
         return productRepository.findByCategory(category);
     }
 
-    public void removeProduct(Product product) {productRepository.delete(product);}
+    public Optional<Product> findProductById(String id) {
+        return productRepository.findById(id);
+    }
 
-    public void addProduct(Product product) {productRepository.save(product);}
+    public void removeProduct(Product product) {
+        productRepository.delete(product);
+    }
+
+    public void addProduct(Product product) {
+        productRepository.save(product);
+    }
 
 
 }
