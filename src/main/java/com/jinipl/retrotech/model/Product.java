@@ -19,4 +19,7 @@ public class Product {
     private double price;
     private int stock;
     private String imageUrl;
+
+    public Product(String number, String testProduct, String testDescription, double v, String testCategory, String testImageUrl) {
+    }
 }
