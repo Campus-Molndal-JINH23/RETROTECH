@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 @Document("shoppingcart")
 public class ShoppingCart {
+
     private ProductService productService;
     @Getter
     @Setter
@@ -24,8 +25,6 @@ public class ShoppingCart {
     public void addProduct(Product product) {
         products.add(product);
     }
-
-
 
     public void removeProduct(Product product) {
 
@@ -65,7 +64,7 @@ public class ShoppingCart {
             }
         }
 
-        // Convert discount percentage to a factor (e.g., 20% -> 0.20)
+        // Convert discount percentage to a factor
         double discountFactor = discountValue / 100.0;
 
         // Calculate total price after applying the discount
@@ -76,7 +75,7 @@ public class ShoppingCart {
         // Apply the discount
         totalPrice *= (1 - discountFactor);
 
-        return totalPrice + leveransAvgift;//Leveransavgift
+        return totalPrice + leveransAvgift;// Add shipment cost.
     }
 
 

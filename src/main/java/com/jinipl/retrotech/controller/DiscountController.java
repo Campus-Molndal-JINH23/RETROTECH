@@ -10,12 +10,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class DiscountController {
 
-    // Static variable to store the discount value
-    private static String discountValue;
+    static String discountValue;
 
     @GetMapping("/discount")
     public String showDiscount(Model model) {
-        // Pass the discount value to the Thymeleaf template
         model.addAttribute("discountValue", discountValue);
         return "discount";
     }

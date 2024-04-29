@@ -28,7 +28,6 @@ public class ShoppingCartController {
     public ShoppingCartController(ShoppingCart shoppingCart, Order order, ProductService productService) {
         this.shoppingCart = shoppingCart;
         this.order = order;
-
         this.productService = productService;
     }
 
@@ -42,13 +41,13 @@ public class ShoppingCartController {
             model.addAttribute("discount", "0"); // Set default discount to 0
         }
         discountValue = discount;
-        // Calculate and add the total price
+
         model.addAttribute("totalPrice", shoppingCart.getTotalPrice(discount));
 
         return "shoppingcart";
     }
 
-
+    //Adds a product to the cart and removes it from the list of products.
     @PostMapping("/add/{productId}")
     public String addToCart(@PathVariable String productId) {
         for (Product product : productService.showAllProducts()) {
@@ -62,7 +61,7 @@ public class ShoppingCartController {
 
     @PostMapping("/remove/{productId}")
     public String removeFromCart(@PathVariable String productId) {
-        shoppingCart.removeProductById(productId);// Lägger till en product tillbaka i ProductRepon i själva metoden i ShoppingCart.java
+        shoppingCart.removeProductById(productId);// The product is added back to the list of products in ShoppingCart.
         return "redirect:/shoppingcart";
     }
 
